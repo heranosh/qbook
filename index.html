@@ -69,7 +69,29 @@
 <p id="authMessage" class="message"></p>
       </div>
     </section>
+<section id="recoveryScreen" class="auth-screen" hidden>
+  <div class="auth-card">
+    <h2>تغییر رمز عبور</h2>
+    <p class="subtitle">رمز عبور جدیدت رو وارد کن.</p>
 
+    <form id="recoveryForm">
+      <label for="newPassword">رمز عبور جدید</label>
+      <input
+        id="newPassword"
+        type="password"
+        minlength="6"
+        placeholder="رمز جدید"
+        required
+      >
+
+      <button type="submit" class="primary-btn full">
+        ثبت رمز جدید
+      </button>
+    </form>
+
+    <p id="recoveryMessage" class="message"></p>
+  </div>
+</section>
     <section id="appScreen" hidden>
 
       <div class="welcome">
