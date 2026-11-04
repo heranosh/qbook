@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QBOOK | رزرو سؤالات</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">Q<span>BOOK</span><small>.</small></div>
+    <div id="userArea" class="user-area"></div>
+  </header>
+
+  <main class="container">
+
+    <section id="authScreen" class="auth-screen">
+      <div class="auth-card">
+        <div class="logo-icon">✦</div>
+        <p class="eyebrow">YOUR CLASSROOM. YOUR QUESTIONS.</p>
+        <h1>Welcome to <span>QBOOK.</span></h1>
+        <p class="subtitle">سؤالت رو انتخاب کن، قبل از بقیه رزروش کن!</p>
+
+        <div class="auth-tabs">
+          <button class="tab active" id="loginTab">ورود</button>
+          <button class="tab" id="signupTab">ساخت حساب</button>
+        </div>
+
+      
+<form id="authForm">
+  <label for="username">نام کاربری</label>
+  <input
+    id="username"
+    type="text"
+    placeholder="نام خود را وارد کنید"
+    minlength="3"
+    required
+  >
+
+  <label for="email">ایمیل</label>
+  <input
+    id="email"
+    type="email"
+    placeholder="example@gmail.com"
+    required
+  >
+
+  <label for="password">رمز عبور</label>
+  <input
+    id="password"
+    type="password"
+    placeholder="رمز عبور"
+    minlength="4"
+    required
+  >
+
+  <button class="primary-btn full" id="authSubmit">
+    ورود به QBOOK
+  </button>
+</form>
+
+        <p id="authMessage" class="message"></p>
+      </div>
+    </section>
+
+    <section id="appScreen" hidden>
+
+      <div class="welcome">
+        <p class="eyebrow">QUESTION RESERVATION SYSTEM</p>
+        <h1>وقتشه یه سؤال <span>بقاپی!</span> 😭</h1>
+        <p>کتابت رو انتخاب کن و سؤال مورد نظرت رو رزرو کن.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <span>سؤالات رزرو شده</span>
+          <strong id="totalReserved">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>رزروهای من</span>
+          <strong id="myReserved">0</strong>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="section-heading">
+          <span class="step">01</span>
+          <div>
+            <h2>انتخاب کتاب</h2>
+            <p>از کدام کتاب سؤال می‌خوای؟</p>
+          </div>
+        </div>
+
+        <div class="book-grid">
+          <button class="book-card" data-book="textbook">
+            <span class="book-emoji">📘</span>
+            <strong>کتاب درسی</strong>
+            <small>ریاضی هفتم</small>
+            <span class="book-arrow">←</span>
+          </button>
+
+          <button class="book-card" data-book="workbook">
+            <span class="book-emoji">📙</span>
+            <strong>ماجرای بیست</strong>
+            <small>ریاضی هفتم</small>
+            <span class="book-arrow">←</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section" id="chapterSection" hidden>
+        <div class="section-heading">
+          <span class="step">02</span>
+          <div>
+            <h2>انتخاب فصل</h2>
+            <p>فصلی که سؤال توش قرار داره رو انتخاب کن.</p>
+          </div>
+        </div>
+        <div id="chapterGrid" class="chapter-grid"></div>
+      </section>
+
+      <section class="section" id="questionSection" hidden>
+        <div class="section-heading">
+          <span class="step">03</span>
+          <div>
+            <h2>انتخاب سؤال</h2>
+            <p id="selectionInfo">شماره سؤال مورد نظرت رو انتخاب کن.</p>
+          </div>
+        </div>
+
+        <div class="legend">
+          <span><i class="dot free"></i> آزاد</span>
+          <span><i class="dot taken"></i> رزرو شده</span>
+          <span><i class="dot mine"></i> مال من</span>
+        </div>
+
+        <div id="questionGrid" class="question-grid"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <span class="step">★</span>
+          <div>
+            <h2>رزروهای من</h2>
+            <p>سؤال‌هایی که به اسم تو ثبت شده‌اند.</p>
+          </div>
+        </div>
+        <div id="myReservations" class="reservation-list"></div>
+      </section>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>QBOOK © 2026 · ساخته شده برای کلاس ریاضی هفتم 💙</p>
+  </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+</body>
+</html>
