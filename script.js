@@ -225,26 +225,19 @@ async function showApp() {
 // LOAD SHARED RESERVATIONS
 // ======================================
 
-async function loadReservations() {
 
- const { data, error } = await supabaseClient.auth.signUp({
-  email,
-  password,
-  options: {
-    data: {
-      username: username
-    },
-    emailRedirectTo: window.location.origin + "/math.html"
-  }
-});
+async function loadReservations() {
+  const { data, error } = await supabaseClient
+    .from("reservations")
+    .select("id, book, chapter, question_number, user_id, username");
 
   if (error) {
-    console.error(error);
+    console.error("Error loading reservations:", error);
     alert("دریافت رزروها با مشکل مواجه شد: " + error.message);
     return;
   }
 
-  reservations = data.map(q => ({
+  reservations = (data || []).map(q => ({
     id: q.id,
     book: q.book,
     chapter: q.chapter,
