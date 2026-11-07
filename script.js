@@ -547,6 +547,7 @@ function renderStats() {
 // START WEBSITE
 // ======================================
 
+
 async function initializeQBook() {
 
   const { data, error } = await supabaseClient.auth.getSession();
@@ -559,6 +560,8 @@ async function initializeQBook() {
 
   if (data.session) {
 
+   
+
     setCurrentUser(data.session.user);
     await showApp();
 
@@ -568,21 +571,3 @@ async function initializeQBook() {
     $("appScreen").hidden = true;
   }
 }
-
-// Handle session expiration or sign-out.
-
-supabaseClient.auth.onAuthStateChange((event, session) => {
-
-  if (event === "SIGNED_OUT") {
-
-    currentUser = null;
-    currentUserId = null;
-    reservations = [];
-
-    $("authScreen").hidden = false;
-    $("appScreen").hidden = true;
-    $("userArea").innerHTML = "";
-  }
-});
-
-initializeQBook();
