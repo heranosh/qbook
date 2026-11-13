@@ -130,6 +130,54 @@ $("authForm").addEventListener("submit", async event => {
 });
 
 // ======================================
+// FORGOT PASSWORD
+// ======================================
+
+$("forgotPassword").addEventListener("click", async () => {
+
+  const email = $("email").value.trim();
+
+  if (!email) {
+    $("authMessage").textContent =
+      "لطفاً ابتدا ایمیل خود را وارد کنید.";
+    return;
+  }
+
+  const button = $("forgotPassword");
+
+  button.disabled = true;
+  button.textContent = "در حال ارسال...";
+
+  try {
+
+    const { error } =
+      await supabaseClient.auth.resetPasswordForEmail(email, {
+        redirectTo: "https://heranosh.github.io/qbook/"
+      });
+
+    if (error) throw error;
+
+    $("authMessage").textContent =
+      "لینک بازیابی رمز عبور به ایمیلت ارسال شد.";
+
+  } catch (error) {
+
+    console.error(error);
+
+    $("authMessage").textContent =
+      error.message || "ارسال لینک بازیابی ناموفق بود.";
+
+  } finally {
+
+    button.disabled = false;
+    button.textContent = "فراموشی رمز عبور؟";
+
+  }
+
+});
+
+
+// ======================================
 // CURRENT USER
 // ======================================
 
